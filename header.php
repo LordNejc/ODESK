@@ -59,9 +59,10 @@ include_once 'session.php';
                 <div id="tooplate_menu">
                     <ul>
                         <li><a href="index.php"><span></span>Domov</a></li>
-                        <li><a href="countries.php"><span></span>Države</a></li>
-                        <li><a href="skills.php"><span></span>Veščine</a></li>
-                        <li><a href="blog.html" class="current"><span></span>Blog</a></li>
+						<li><a href="project_add.php"><span></span>Dodaj projekt</a></li>
+						<li><a href="projects.php"><span></span>Projekti</a></li>
+						
+                        
                         <?php
                         if (isset($_SESSION['user_id'])) {
                             ?>
@@ -80,7 +81,7 @@ include_once 'session.php';
                     </ul>    	
                 </div> <!-- end of tooplate_menu -->
 
-                <div id="site_title"><h1><a href="#">Free Website Template</a></h1></div>
+                <div id="site_title"><h1><a href="#">ODESK by 3.TRB</a></h1></div>
 
             </div> <!-- end of header -->
 

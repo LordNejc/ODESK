@@ -16,7 +16,7 @@
         $pass = $salt.$pass;
         //geslo zakodiramo
         $pass = sha1($pass);
-        
+                             
         $query = sprintf("INSERT INTO users(first_name,last_name,
                           email,pass,country_id) VALUES
                           ('%s','%s','%s','%s',".$country_id.")",
