@@ -31,6 +31,13 @@ include_once 'database.php';
                 echo '<a href="project_edit.php?id='.$row['project_id'].'">Uredi</a> ';
                 echo '<a href="project_delete.php?id='.$row['project_id'].'">Izbriši</a>';
             }
+			
+			else
+			{
+				echo '<form method="POST" action="ponudba.php">';
+				echo '<input type="submit" value="Oddaj ponudbo">';
+				echo '</form>';
+			}
             echo "</td>";
             echo '</tr>';
         }

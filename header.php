@@ -62,7 +62,6 @@ include_once 'session.php';
 						<li><a href="project_add.php"><span></span>Dodaj projekt</a></li>
 						<li><a href="projects.php"><span></span>Projekti</a></li>
 						
-                        
                         <?php
                         if (isset($_SESSION['user_id'])) {
                             ?>
