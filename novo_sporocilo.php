@@ -52,9 +52,8 @@
    <div id="okno">
   <div class="textbox">
 
-<?php
-   echo "E-naslov prejemnika:"$row['email']""<br>
-   ?>
+
+  E-naslov prejemnika: <input type="text" name="prejemnik" ><br>
   Zadeva:         <input type="text" name="zadeva" ><br>
 					<input type="hidden" name="posiljatelj" value="<?php echo $user['email']; ?>">
 
