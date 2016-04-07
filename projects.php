@@ -10,10 +10,7 @@ include_once 'database.php';
         <th>Št.</th>
         <th>Ime</th>
         <th>Lastnik: </th>
-		<?php
-		$user = $_POST[user_id];
-		echo ("SELECT u.email FROM users u WHERE("$user"=u.id"););
-		?>
+
         <th>Akcije</th>
     </tr>
     <?php 
