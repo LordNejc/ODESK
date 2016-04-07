@@ -12,7 +12,7 @@ include_once 'database.php';
         <th>Lastnik: </th>
 		<?php
 		$user = $_POST[user_id];
-		echo ("SELECT u.email FROM users u WHERE("user_id"=u.id"););
+		echo ("SELECT u.email FROM users u WHERE("$user"=u.id"););
 		?>
         <th>Akcije</th>
     </tr>
