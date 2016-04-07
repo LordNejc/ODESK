@@ -10,15 +10,11 @@ include_once 'database.php';
         <th>Št.</th>
         <th>Ime</th>
         <th>Lastnik: </th>
-<<<<<<< HEAD
 		<?php
 		//poskus 1
 		$user = $_POST[user_id];
 		echo ("SELECT u.email FROM users u INNER JOIN project p ON p.user_id=u.id WHERE("$user"=u.id"););
 		?>
-=======
-
->>>>>>> 8a6b7df2adfbb9b07e1549756464b59621f45c41
         <th>Akcije</th>
     </tr>
     <?php 
