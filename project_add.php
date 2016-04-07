@@ -1,5 +1,6 @@
 <?php
     include_once 'header.php';
+	include_once 'session.php';
 ?>
 
 <h1>Dodajanje projektov</h1>

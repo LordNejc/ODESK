@@ -21,3 +21,6 @@
     //preusmeritev
     header("Location: project_add.php");
 ?>
+<form method="POST" action="project.php">
+<input type="hidden" name="userid" value="<?php echo $user_id; ?>"/>
+</form>
