@@ -7,7 +7,11 @@ include_once 'database.php';
 <form action="demo_form.asp">
   Ime<input type="text" name="im"><br>
   Priimek<input type="text" name="pr"><br>
-  e-mail<input type="text" name="em"><br>
+  <?php
+  $sql = ("SELECT u.email FROM users u;");
+   echo "E-naslov prejemnika:".$sql;
+   ?>
+   <br>
   Naslov<input type="text" name="ns"><br>
   Ponudba<input type="text" name="pn"><br>
   <input type="submit" value="Pošlji">
