@@ -8,9 +8,9 @@ include_once 'database.php';
   Ime<input type="text" name="im"><br>
   Priimek<input type="text" name="pr"><br>
   <?php
-  $sql = ("SELECT u.email FROM users u;");
-   echo "E-naslov prejemnika:".$sql;
-   ?>
+	$result = mysqli_query($session, "SELECT u.email FROM users u");
+	echo "Email: ".$result;
+  ?>
    <br>
   Naslov<input type="text" name="ns"><br>
   Ponudba<input type="text" name="pn"><br>
