@@ -131,6 +131,7 @@ CREATE TABLE `sporocila` (
   `soprejemniki` varchar(255) DEFAULT NULL,
   `prebrano` tinyint(1) NOT NULL DEFAULT '0',
   `datoteka` varchar(255) CHARACTER SET ucs2 COLLATE ucs2_slovenian_ci NOT NULL
+  `cena` int(11) ,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tukaj bodo sporočila';
 
 --
