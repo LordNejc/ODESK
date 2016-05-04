@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Gostitelj: 127.0.0.1
--- Čas nastanka: 17. mar 2016 ob 11.44
+-- Čas nastanka: 04. maj 2016 ob 20.40
 -- Različica strežnika: 10.1.10-MariaDB
--- Različica PHP: 7.0.2
+-- Različica PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -70,8 +70,18 @@ CREATE TABLE `projects` (
   `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `price` varchar(100) COLLATE utf8_slovenian_ci NOT NULL,
-  `description` text COLLATE utf8_slovenian_ci
+  `description` text COLLATE utf8_slovenian_ci,
+  `konec` varchar(600) COLLATE utf8_slovenian_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
+
+--
+-- Odloži podatke za tabelo `projects`
+--
+
+INSERT INTO `projects` (`id`, `user_id`, `title`, `start_date`, `end_date`, `price`, `description`, `konec`) VALUES
+(3, 4, 'Košnja', '2016-05-04 17:58:23', '2016-05-12 22:00:00', '35', 'Košenje trave na morju', 'koncano'),
+(4, 4, 'Morje', '2016-05-04 18:01:46', '2016-05-19 22:00:00', '35', 'SADSADSADSADSDA', 'koncano'),
+(5, 4, 'Pometanje', '2016-05-04 18:06:35', '2016-05-12 22:00:00', '45', 'asdsaddsa', 'koncano');
 
 -- --------------------------------------------------------
 
@@ -82,19 +92,19 @@ CREATE TABLE `projects` (
 CREATE TABLE `skills` (
   `id` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8_slovenian_ci NOT NULL,
-  `description` text COLLATE utf8_slovenian_ci
+  `description` text COLLATE utf8_slovenian_ci,
+  `feedback` varchar(100) COLLATE utf8_slovenian_ci NOT NULL,
+  `pisec` varchar(600) COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
 --
 -- Odloži podatke za tabelo `skills`
 --
 
-INSERT INTO `skills` (`id`, `title`, `description`) VALUES
-(2, 'ererter', 'tertetr'),
-(4, 'Php', 'Programiranje'),
-(5, 'CSS', ''),
-(6, 'HTML 5', ''),
-(7, 'JavaScript', '');
+INSERT INTO `skills` (`id`, `title`, `description`, `feedback`, `pisec`) VALUES
+(16, 'Žito', 'Žito je posejano.', '5', 'Denis Habot'),
+(15, 'Košnja', 'Košnja je bila v redu in poceni. Tega uporabnika priporočam še naprej.', '5', 'Denis Habot'),
+(17, 'Prevajanje', 'Prevajanje je narejeno super in zelo strokovno.', '1', 'Denis Habot');
 
 -- --------------------------------------------------------
 
@@ -130,7 +140,7 @@ CREATE TABLE `sporocila` (
   `zadeva` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `sporocilo` text NOT NULL,
   `soprejemniki` varchar(255) DEFAULT NULL,
-  `ponudba` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ponudba` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `prebrano` tinyint(1) NOT NULL DEFAULT '0',
   `datoteka` varchar(255) CHARACTER SET ucs2 COLLATE ucs2_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tukaj bodo sporočila';
@@ -139,13 +149,43 @@ CREATE TABLE `sporocila` (
 -- Odloži podatke za tabelo `sporocila`
 --
 
-INSERT INTO `sporocila` (`id`, `prejemnik`, `posiljatelj`, `zadeva`, `sporocilo`, `soprejemniki`, `prebrano`, `datoteka`) VALUES
-(1, 'sdfgsd', '', 'gsdsd', 'gsdsdsdg', NULL, 0, ''),
-(2, 'sdgsdgsdgsd', 'urban.kocnik@gmail.com', 'gsdsdgsdgsd', 'urban', NULL, 0, ''),
-(6, 'kr neki', 'urban.kocnik@gmail.com', 'sgsdfgds', 'sgdsdsdg', NULL, 0, ''),
-(8, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'sgd', 'tzi', NULL, 1, ''),
-(9, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'jjgfj', 'jjjjsdf', NULL, 1, ''),
-(10, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'gs', 'dggdfhdf', NULL, 1, '20150226054748224Koala.jpg');
+INSERT INTO `sporocila` (`id`, `prejemnik`, `posiljatelj`, `zadeva`, `sporocilo`, `soprejemniki`, `ponudba`, `prebrano`, `datoteka`) VALUES
+(1, 'sdfgsd', '', 'gsdsd', 'gsdsdsdg', NULL, '', 0, ''),
+(2, 'sdgsdgsdgsd', 'urban.kocnik@gmail.com', 'gsdsdgsdgsd', 'urban', NULL, '', 0, ''),
+(6, 'kr neki', 'urban.kocnik@gmail.com', 'sgsdfgds', 'sgdsdsdg', NULL, '', 0, ''),
+(8, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'sgd', 'tzi', NULL, '', 1, ''),
+(9, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'jjgfj', 'jjjjsdf', NULL, '', 1, ''),
+(10, 'urban.kocnik@gmail.com', 'urban.kocnik@gmail.com', 'gs', 'dggdfhdf', NULL, '', 1, '20150226054748224Koala.jpg'),
+(11, 'islam.music@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sdsd', NULL, '9', 0, ''),
+(12, 'islam@scv.si', 'leon.habot98@gmail.com', 'sadsadsad', 'sdsd', NULL, '9', 0, ''),
+(13, 'urban.kocnik@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sdsd', NULL, '9', 0, ''),
+(14, 'denis.habot@hotmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sdsd', NULL, '9', 0, ''),
+(15, 'leon.habot98@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sdsd', NULL, '9', 1, ''),
+(16, 'islam.music@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'adssad', NULL, '5', 0, ''),
+(17, 'islam@scv.si', 'leon.habot98@gmail.com', 'sadsadsad', 'adssad', NULL, '5', 0, ''),
+(18, 'urban.kocnik@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'adssad', NULL, '5', 0, ''),
+(19, 'denis.habot@hotmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'adssad', NULL, '5', 0, ''),
+(20, 'leon.habot98@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'adssad', NULL, '5', 1, ''),
+(21, 'islam.music@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'das', NULL, '3', 0, ''),
+(22, 'islam@scv.si', 'leon.habot98@gmail.com', 'sadsadsad', 'das', NULL, '3', 0, ''),
+(23, 'urban.kocnik@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'das', NULL, '3', 0, ''),
+(24, 'denis.habot@hotmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'das', NULL, '3', 0, ''),
+(25, 'leon.habot98@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'das', NULL, '3', 1, ''),
+(26, 'islam.music@gmail.com', '', 'sadsadsad', '', NULL, NULL, 0, ''),
+(27, 'islam@scv.si', '', 'sadsadsad', '', NULL, NULL, 0, ''),
+(28, 'urban.kocnik@gmail.com', '', 'sadsadsad', '', NULL, NULL, 0, ''),
+(29, 'denis.habot@hotmail.com', '', 'sadsadsad', '', NULL, NULL, 0, ''),
+(30, 'leon.habot98@gmail.com', '', 'sadsadsad', '', NULL, NULL, 1, ''),
+(31, 'islam.music@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sadsad', NULL, '1', 0, ''),
+(32, 'islam@scv.si', 'leon.habot98@gmail.com', 'sadsadsad', 'sadsad', NULL, '1', 0, ''),
+(33, 'urban.kocnik@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sadsad', NULL, '1', 0, ''),
+(34, 'denis.habot@hotmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sadsad', NULL, '1', 0, ''),
+(35, 'leon.habot98@gmail.com', 'leon.habot98@gmail.com', 'sadsadsad', 'sadsad', NULL, '1', 0, ''),
+(36, 'islam.music@gmail.com', '', 'sadsadsad', 'Ponudba sprejeta', NULL, NULL, 0, ''),
+(37, 'islam@scv.si', '', 'sadsadsad', 'Ponudba sprejeta', NULL, NULL, 0, ''),
+(38, 'urban.kocnik@gmail.com', '', 'sadsadsad', 'Ponudba sprejeta', NULL, NULL, 0, ''),
+(39, 'denis.habot@hotmail.com', '', 'sadsadsad', 'Ponudba sprejeta', NULL, NULL, 0, ''),
+(40, 'leon.habot98@gmail.com', '', 'sadsadsad', 'Ponudba sprejeta', NULL, NULL, 1, '');
 
 -- --------------------------------------------------------
 
@@ -174,7 +214,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `country_id`, `first_name`, `last_name`, `email`, `pass`, `date_birth`, `description`, `avatar`, `hashcode`, `active`) VALUES
 (1, 1, 'Islam', 'Mušić', 'islam.music@gmail.com', '7f667781432ac3c11c9c281c4ecb1a11690b729f', '2015-02-12 17:43:36', NULL, NULL, '', 0),
 (2, 10, 'Islam', 'Mušić', 'islam@scv.si', 'c27d05b6a544f7329442c4580963ba85abb93874', '2015-02-26 17:48:21', 'Tole ', 'slike/20150226063119602Penguins.jpg', '', 0),
-(3, 1, 'urban', 'kočnik', 'urban.kocnik@gmail.com', 'f7721bd98b7b5b240973673691db815ed2ec962f', '2016-03-16 14:30:21', NULL, NULL, '', 0);
+(3, 1, 'urban', 'kočnik', 'urban.kocnik@gmail.com', 'f7721bd98b7b5b240973673691db815ed2ec962f', '2016-03-16 14:30:21', NULL, NULL, '', 0),
+(4, 1, 'Denis', 'Habot', 'denis.habot@hotmail.com', 'ee4f0c8dc366b1f4de25a9f0dbf620f842520d36', '2016-04-28 15:17:24', NULL, NULL, '', 0),
+(5, 1, 'Leon', 'Habot', 'leon.habot98@gmail.com', '8c30e7f4066c47476adbd1593691254c3c5efdf6', '2016-04-28 15:17:33', NULL, NULL, '', 0);
 
 --
 -- Indeksi zavrženih tabel
@@ -246,12 +288,12 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT tabele `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT tabele `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT tabele `skills_users`
 --
@@ -261,12 +303,12 @@ ALTER TABLE `skills_users`
 -- AUTO_INCREMENT tabele `sporocila`
 --
 ALTER TABLE `sporocila`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT tabele `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
