@@ -12,11 +12,10 @@
    
 ?>
 
-<h1>Obrazec</h1>
+<h1>Seznam uporabnikov</h1>
 
 <form action="users.php" method="POST">
-    Ime: <input type="text" name="ime99" /><br />
-    <input type="submit" value="Pošlji" />
+    <input type="submit" value="Uporabniki" />
 </form>
         
 <?php 

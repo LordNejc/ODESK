@@ -69,6 +69,7 @@ CREATE TABLE `projects` (
   `title` varchar(150) COLLATE utf8_slovenian_ci NOT NULL,
   `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `price` varchar(100) COLLATE utf8_slovenian_ci NOT NULL,
   `description` text COLLATE utf8_slovenian_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
@@ -129,6 +130,7 @@ CREATE TABLE `sporocila` (
   `zadeva` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `sporocilo` text NOT NULL,
   `soprejemniki` varchar(255) DEFAULT NULL,
+  `ponudba` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `prebrano` tinyint(1) NOT NULL DEFAULT '0',
   `datoteka` varchar(255) CHARACTER SET ucs2 COLLATE ucs2_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tukaj bodo sporočila';

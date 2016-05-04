@@ -1,6 +1,7 @@
 <?php
     include_once 'sp_mz.php';
 	include_once 'database.php';
+	
    
 ?>
 
@@ -13,7 +14,8 @@
    $sporocilo=$_POST['sporocilo'];
    $target_file;
    $target_dir = "datoteke/";
-	
+   $ponudba=$_POST['cena'];
+ 
 	$random = date('Ymdhis').rand(1,1000);
 	
 	if (isset($_FILES["datoteka"]["name"])) {
@@ -45,8 +47,8 @@ $result = mysqli_query($link, $query);
 
 while ($prejemnik = mysqli_fetch_array($result)) {
 		$prejemnik = $row['email'];
-		$query =   "INSERT INTO sporocila (posiljatelj,prejemnik,zadeva,sporocilo,datoteka)
-				VALUES ('$posiljatelj','$prejemnik','$zadeva','$sporocilo','$target_file');";
+		$query =   "INSERT INTO sporocila (posiljatelj,prejemnik,zadeva,sporocilo,ponudba,datoteka)
+				VALUES ('$posiljatelj','$prejemnik','$zadeva','$sporocilo',$ponudba,'$target_file');";
 				
 mysqli_query($link, $query); }
 	}
@@ -56,8 +58,8 @@ $result = mysqli_query($link, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 	$prejemnik = $row['email'];
-			$query =   "INSERT INTO sporocila (posiljatelj,prejemnik,zadeva,sporocilo)
-						VALUES ('$posiljatelj','$prejemnik','$zadeva','$sporocilo');";
+			$query =   "INSERT INTO sporocila (posiljatelj,prejemnik,zadeva,sporocilo,ponudba)
+						VALUES ('$posiljatelj','$prejemnik','$zadeva','$sporocilo',$ponudba);";
 mysqli_query($link, $query);	}
 	}
 

@@ -51,19 +51,26 @@
   
    <div id="okno">
   <div class="textbox">
-
 <?php
-   echo "E-naslov prejemnika:"$row['email']""<br>
-   ?>
-  Zadeva:         <input type="text" name="zadeva" ><br>
-					<input type="hidden" name="posiljatelj" value="<?php echo $user['email']; ?>">
+$p=$_POST["skriti"];
+$z=$_POST["zadeva"];
 
-  
+?>
+
+
+
+  E-naslov prejemnika: <input type="text" name="prejemnik" value="<?php echo $p; ?>" ><br>
+  Zadeva:         <input type="text" name="zadeva" value="<?php echo $z; ?>"><br>
+					<input type="hidden" name="posiljatelj" value="<?php echo $user['email']; ?>">
+  Cena:  <input type="text" name="cena">€<br/>
   Sporočilo:<br>
-  <textarea name="sporocilo" rows="14" cols="69"></textarea><br><br>
+  <textarea name="sporocilo" rows="14" cols="69" placeholder="Vnesite svoje podatke:
+  Ime
+  Priimek
+  Naslov
+  Opis"></textarea><br><br>
    <p align="middle">
        <input type="file" name="datoteka" /><br />
-    
   <input type="submit" value="Pošlji sporočilo" />
 </p>
   </div> 

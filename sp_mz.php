@@ -14,7 +14,7 @@
   <div id="glavnimeni">
   
   <div id="sporočila">
-  SPOROČILA 
+  <h1>PONUDBE</h1>
   </div>
   
   
@@ -25,12 +25,10 @@
   
   <div id="izbira">
   
-  <div id="novasporočila">
-  <a href="novo_sporocilo.php">Novo sporočilo</a>
-  </div>
+  
   
   <div id="prejeta">
-  <a href="prejeta_sporocila.php">Prejeta</a>
+  <a href="prejeta_sporocila.php">Pregled ponudb</a>
   </div>
 
   

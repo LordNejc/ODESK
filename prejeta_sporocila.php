@@ -8,11 +8,13 @@
 <table cellpading="0" cellspacing="0" border="1">
     <tr>
         <th>Prejemnik</th>
-        <th>Sporočilo</th>
+        <th>Ponudba</th>
 		<th>Pošiljatelj</th>
 		<th>Zadeva</th>
-		<th>Datoteka</th>
-		<th>Izbriši sporočilo</th>
+		<th>Ponujena cena</th>
+		<th>Izbriši ponudbo</th>
+		<th>Sprejmi ponudbo</th>
+		
        
     </tr>
 
@@ -27,31 +29,33 @@ $user_id = $_SESSION['user_id'];
     $user = mysqli_fetch_array($result);
 	
 	$ime=$user['email'];
-	
         $query = "SELECT * FROM sporocila WHERE (prejemnik = '$ime');";
         //pošljemo ukaz v bazo in shranimo rezultat
         $result = mysqli_query($link, $query);
-        
+      
+		
         while($row = mysqli_fetch_array($result)) {
             echo '<tr>';
-                echo '<td>'.$row['prejemnik'].'</td>';
-                echo "<td><a href='poglej_sporocilo.php?id=" .$row['id']."'>Poglej sporočilo</a></td>";
+                echo '<td>';
+				echo $row['prejemnik'];
+				echo '</td>';
+                echo "<td><a href='poglej_sporocilo.php?id=" .$row['id']."'>Poglej ponudbo</a></td>";
 				 echo '<td>'.$row['posiljatelj'].'</td>';
 				  echo '<td>'.$row['zadeva'].'</td>';
-				if (!empty($row['datoteka'])) {
-					echo "<td><a href='download.php?datoteka=".$row['datoteka']."' >Datoteka</a></td>";
-				} else  {
-					echo '<td></td>';
-				}
-
-				  echo "<td><a href='zbrisi_sporocilo.php?id=" .$row['id']."'>Izbriši sporočilo.</a></td>";
-				   
-
+				  echo '<td>'.$row['ponudba'].'€'.'</td>';
+				  $preis=$row['ponudba'];
+				  echo "<td><a href='zbrisi_sporocilo.php?id=" .$row['id']."'>Izbriši ponudbo</a></td>";
+				  echo '<td>'; ?> 
+				  <form action="sprejem.php" method="POST">
+				  <input type="hidden" name="delojemalec" value="<?php echo $row['posiljatelj']; ?>">
+				  <input type="hidden" name="projekt" value="<?php echo $row['zadeva']; ?>">
+				  <input type="submit" name="Sprejem" value="Sprejmi"></form></td>
+				 </td>
+				<?php  
             echo '</tr>';
+		   
         }
-		
-		
-		
+
 
 	?>
 	

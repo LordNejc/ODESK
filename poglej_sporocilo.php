@@ -22,7 +22,7 @@ $query = "SELECT * FROM sporocila WHERE (id = '$id');";
 				 echo '<br>';
 				 echo '<tr><td> Sporočilo: </td>';
 				 echo '<td>'.$row['sporocilo'].'</td>';
-				  
+				  echo $row['ponudba'];
 				 
 				   
 

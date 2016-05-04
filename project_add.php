@@ -1,6 +1,6 @@
+
 <?php
     include_once 'header.php';
-	include_once 'session.php';
 ?>
 
 <h1>Dodajanje projektov</h1>
@@ -8,10 +8,12 @@
     Ime: <input type="text" name="title" required="required" /><br />
     Datum začetka: <input type="text" id="startdate" name="start_date" required="required" /><br />
     Datum konca: <input type="text" id="enddate" name="end_date" /><br />
+	Okvirna cena: <input type="text"  name="price" /><br />
     Opis: <textarea name="description" cols="15" rows="5" placeholder="Vnesi pobrobni opis projekta"></textarea><br />
     <input type="submit" value="Vnesi" /> 
     <input type="reset" value="Prekliči" />
 </form>
+
 
 
 <?php

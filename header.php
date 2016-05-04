@@ -60,8 +60,8 @@ include_once 'session.php';
                     <ul>
                         <li><a href="index.php"><span></span>Domov</a></li>
 						<li><a href="project_add.php"><span></span>Dodaj projekt</a></li>
-						<li><a href="projects.php"><span></span>Projekti</a></li>
-						
+                        <li><a href="projects.php"><span></span>Projekti</a></li>
+						<li><a href="sporocila_meni.php"><span></span>Ponudbe</a></li>
                         <?php
                         if (isset($_SESSION['user_id'])) {
                             ?>
@@ -80,7 +80,7 @@ include_once 'session.php';
                     </ul>    	
                 </div> <!-- end of tooplate_menu -->
 
-                <div id="site_title"><h1><a href="#">ODESK by 3.TRB</a></h1></div>
+                <div id="site_title"><h1><a href="#">Free Website Template</a></h1></div>
 
             </div> <!-- end of header -->
 
