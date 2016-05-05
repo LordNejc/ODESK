@@ -1,8 +1,8 @@
 <?php
-    $username = 'root';
+    $username = '2089314_trbodesk';
     $password = '';
-    $database = 'odesk';
-    $server = 'localhost';
+    $database = '2089314_trbodesk';
+    $server = ' fdb3.biz.nf';
     //povezava na podatkovno bazo
     $link = mysqli_connect($server, $username, $password, $database);
     
